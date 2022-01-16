@@ -10,10 +10,8 @@ process.on('uncaughtException', err => {
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
+const DB =
+  'mongodb+srv://yassinekhouaja:bigbang404@cluster0.fdg94.mongodb.net/natrous?retryWrites=true&w=majority';
 
 mongoose
   .connect(DB, {
@@ -25,8 +23,6 @@ mongoose
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-  console.clear();
-
   console.log(`App running on port ${port}...`);
 });
 
